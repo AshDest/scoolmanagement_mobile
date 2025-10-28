@@ -6,7 +6,7 @@ import 'mock_data_service.dart';
 
 class AuthService {
   // Set to true to use mock data (no backend needed)
-  static const bool useMockData = true;
+  static const bool useMockData = false;
 
   // Login
   static Future<User> login(String email, String password) async {

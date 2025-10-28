@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppConstants {
   // API Base URL - Replace with your actual API URL
-  static const String baseUrl = 'https://api.example.com/api';
+  static const String baseUrl = 'https://school.ashuzadestin.space/api/v1/';
 
   // API Endpoints
   static const String loginEndpoint = '/auth/login';
