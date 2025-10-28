@@ -5,7 +5,7 @@ import 'mock_data_service.dart';
 
 class StudentService {
   // Set to true to use mock data (no backend needed)
-  static const bool useMockData = true;
+  static const bool useMockData = false;
 
   // Get all students
   static Future<List<Student>> getAllStudents() async {
