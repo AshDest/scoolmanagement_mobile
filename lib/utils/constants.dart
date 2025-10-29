@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class AppConstants {
   // API Base URL - Replace with your actual API URL
-  static const String baseUrl = 'https://school.ashuzadestin.space/api/v1/';
+  static const String baseUrl = 'https://school.ashuzadestin.space/api/v1';
 
   // API Endpoints
-  static const String loginEndpoint = '/auth/login';
+  static const String loginEndpoint = '/login';
   static const String studentsEndpoint = '/students';
   static const String teachersEndpoint = '/teachers';
   static const String classesEndpoint = '/classes';

@@ -38,6 +38,7 @@ class ApiService {
 
       return _handleResponse(response);
     } catch (e) {
+      print('❌ Network error: $e'); // Debug log
       throw Exception('Network error: $e');
     }
   }
@@ -55,14 +56,22 @@ class ApiService {
       }
 
       final url = Uri.parse('${AppConstants.baseUrl}$endpoint');
+
+      print('🌐 Making POST request to: $url'); // Debug log
+      print('📤 Request body: ${jsonEncode(body)}'); // Debug log
+
       final response = await http.post(
         url,
         headers: _getHeaders(token: token),
         body: jsonEncode(body),
       );
 
+      print('📥 Response status: ${response.statusCode}'); // Debug log
+      print('📥 Response body: ${response.body}'); // Debug log
+
       return _handleResponse(response);
     } catch (e) {
+      print('❌ Network error: $e'); // Debug log
       throw Exception('Network error: $e');
     }
   }
@@ -133,7 +142,8 @@ class ApiService {
   // Save token
   static Future<void> saveToken(String token) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(AppConstants.tokenKey, token);
+    print('✅ Token saved: $token');
+    await prefs.setString(AppConstants.tokenKey, token);// Debug log
   }
 
   // Clear token (logout)
