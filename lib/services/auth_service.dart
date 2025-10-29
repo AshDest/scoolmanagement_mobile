@@ -5,7 +5,7 @@ import 'api_service.dart';
 import 'mock_data_service.dart';
 
 class AuthService {
-  // Set to true to use mock data (no backend needed)
+  // Set to false to use real API instead of mock data
   static const bool useMockData = false;
 
   // Login
@@ -26,7 +26,9 @@ class AuthService {
           },
           requiresAuth: false,
         );
-        user = User.fromJson(response['user'] ?? response);
+
+        // Votre API renvoie la structure complète avec success, message, data
+        user = User.fromJson(response);
       }
 
       // Save token and user info
@@ -45,21 +47,19 @@ class AuthService {
     }
   }
 
-  // Logout
+  // Rest of the methods remain the same
   static Future<void> logout() async {
     await ApiService.clearToken();
     final prefs = await SharedPreferences.getInstance();
     await prefs.clear();
   }
 
-  // Check if user is logged in
   static Future<bool> isLoggedIn() async {
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString(AppConstants.tokenKey);
     return token != null && token.isNotEmpty;
   }
 
-  // Get current user info
   static Future<Map<String, String?>> getCurrentUserInfo() async {
     final prefs = await SharedPreferences.getInstance();
     return {
@@ -69,4 +69,3 @@ class AuthService {
     };
   }
 }
-
